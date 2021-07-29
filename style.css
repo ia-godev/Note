@@ -99,6 +99,13 @@ body {
   font-style: italic;
 }
 
+.chars-nb {
+  color: #999999;
+  font-size: 15px;
+  margin-top: 1px;
+  margin-right: 3px;
+}
+
 .popup-container {
   display: none;
   justify-content: center;
@@ -116,4 +123,17 @@ body {
 
 .popup-container.exit {
   right: -10vw;
+}
+
+@media only screen and (max-width: 720px) {
+  .notes {
+    display: flex;
+  }
+  
+  .note {
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    width: 80%;
+  }
 }

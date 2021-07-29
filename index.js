@@ -12,11 +12,17 @@ newNote.addEventListener("click", () => {
 
 setInterval(() => {
   try {
-  if (!(document.getElementById("textarea0").value == null)) {
-    note1 = document.cookie = "note1="+document.getElementById("textarea0").value+"; "+date+"; SameSite=Strict";
-    note2 = document.cookie = "note2="+document.getElementById("textarea1").value+"; "+date+"; SameSite=Strict";
-    note3 = document.cookie = "note3="+document.getElementById("textarea2").value+"; "+date+"; SameSite=Strict";
-  }
+    if (!(document.getElementById("textarea0").value == null)) {
+      document.getElementById("charsNb0").innerHTML = document.getElementById("textarea0").value.length+"/200";
+      document.getElementById("charsNb1").innerHTML = document.getElementById("textarea1").value.length+"/200";
+      document.getElementById("charsNb2").innerHTML = document.getElementById("textarea2").value.length+"/200";
+    }
+    if (!(document.getElementById("textarea0").value == null || document.getElementById("textarea1").value == null || 
+    document.getElementById("textarea2").value == null)) {
+      note1 = document.cookie = "note1="+document.getElementById("textarea0").value+"; "+date+"; SameSite=Strict";
+      note2 = document.cookie = "note2="+document.getElementById("textarea1").value+"; "+date+"; SameSite=Strict";
+      note3 = document.cookie = "note3="+document.getElementById("textarea2").value+"; "+date+"; SameSite=Strict";
+    }
   } catch (err) {}
 }, 100);
 
@@ -42,10 +48,16 @@ function creatNote() {
       noteNb--;
     })
 
+    let charsNb = document.createElement("div");
+    charsNb.classList.add("chars-nb");
+    charsNb.id = "charsNb"+noteNb;
+    charsNb.innerHTML = "0/200";
+    document.getElementById("btns"+noteNb).appendChild(charsNb);
   
     let textarea = document.createElement("textarea");
     textarea.classList.add("textarea");
     textarea.id = "textarea"+noteNb;
+    textarea.maxLength = 200;
     textarea.placeholder = "Write the note here.";
     document.getElementById("note"+noteNb).appendChild(textarea);
     
