@@ -1,29 +1,15 @@
 let newNote = document.getElementById("new-note");
 const notes = document.getElementsByClassName("notes");
 let noteNb = 0;
-let note1 = null;
-let note2 = null;
-let note3 = null;
-let date = new Date(2050, 1, 1);
 
 newNote.addEventListener("click", () => {
   creatNote();
 })
 
 setInterval(() => {
-  try {
-    if (!(document.getElementById("textarea0").value == null)) {
-      document.getElementById("charsNb0").innerHTML = document.getElementById("textarea0").value.length+"/200";
-      document.getElementById("charsNb1").innerHTML = document.getElementById("textarea1").value.length+"/200";
-      document.getElementById("charsNb2").innerHTML = document.getElementById("textarea2").value.length+"/200";
-    }
-    if (!(document.getElementById("textarea0").value == null || document.getElementById("textarea1").value == null || 
-    document.getElementById("textarea2").value == null)) {
-      note1 = document.cookie = "note1="+document.getElementById("textarea0").value+"; "+date+"; SameSite=Strict";
-      note2 = document.cookie = "note2="+document.getElementById("textarea1").value+"; "+date+"; SameSite=Strict";
-      note3 = document.cookie = "note3="+document.getElementById("textarea2").value+"; "+date+"; SameSite=Strict";
-    }
-  } catch (err) {}
+  try {document.getElementById("charsNb0").innerHTML = document.getElementById("textarea0").value.length+"/200";}catch(e){}
+  try {document.getElementById("charsNb1").innerHTML = document.getElementById("textarea1").value.length+"/200";}catch(e){}
+  try {document.getElementById("charsNb2").innerHTML = document.getElementById("textarea2").value.length+"/200";}catch(e){}
 }, 100);
 
 function creatNote() {
